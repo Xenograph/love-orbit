@@ -4,9 +4,9 @@ local body = require 'body'
 local util = require 'util'
 local system = require 'system'
 local lines = require 'lines'
+local bodies = require 'bodies'
 
 -- Constants
-local centerX, centerY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
 local timeStep = 1/60
 
 -- Globals
@@ -17,11 +17,9 @@ local paused = false
 local drawLines = true
 
 function love.load()
-	universe:addBody(body(vector(centerX, centerY), vector(0, 0), 1000000, 10, true))
-	universe:addBody(body(vector(centerX+20,centerY),vector(0,-math.sqrt(1000000/20)), 10000, 10))
-	universe:addBody(body(vector(centerX+100/2,centerY+100*math.sqrt(3)/2),vector(math.sqrt(1000000/100)*math.sqrt(3)/2,-math.sqrt(1000000/100)/2), 100, 4))
-	universe:addBody(body(vector(centerX+100/2,centerY-100*math.sqrt(3)/2),vector(-math.sqrt(1000000/100)*math.sqrt(3)/2,-math.sqrt(1000000/100)/2), 100, 4))
-	universe:addBody(body(vector(centerX+250,centerY+20),vector(0,-math.sqrt(1000000/250)), 1, 2))
+	for _, b in ipairs(bodies) do
+		universe:addBody(b)
+	end
 end
 
 function love.draw()
