@@ -1,10 +1,10 @@
-local function deepcopy(orig)
+local function deepCopy(orig)
     local orig_type = type(orig)
     local copy
     if orig_type == 'table' then
         copy = {}
         for orig_key, orig_value in next, orig, nil do
-            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+            copy[deepCopy(orig_key)] = deepCopy(orig_value)
         end
         setmetatable(copy, getmetatable(orig))
     else
@@ -13,4 +13,4 @@ local function deepcopy(orig)
     return copy
 end
 
-return {deepcopy = deepcopy}
+return {deepCopy = deepCopy}
