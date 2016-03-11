@@ -39,17 +39,25 @@ function vector.__sub(a, b)
 end
 
 function vector.__mul(a,b)
-	local res = new()
 	if type(a) == "number" then
+		local res = new()
 		for i, _ in ipairs(b) do
 			table.insert(res, b[i]*a)
 		end
 		return res
+	elseif type(b) == "number" then
+		local res = new()
+		for i, _ in ipairs(a) do
+			table.insert(res, a[i]*b)
+		end
+		return res
+	else
+		local res = 0
+		for i, _ in ipairs(a) do
+			res = res + a[i]*b[i]
+		end
+		return res
 	end
-	for i, _ in ipairs(a) do
-		table.insert(res, a[i]*b)
-	end
-	return res
 end
 
 function vector.__div(a,b)

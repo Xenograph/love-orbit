@@ -42,6 +42,7 @@ function system:evolve(delta)
 			b.vel = b.vel + delta[2][i]
 		end
 	end
+	return self
 end
 
 function system:clone()
