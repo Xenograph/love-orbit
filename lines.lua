@@ -21,4 +21,8 @@ function lines.draw()
 	end
 end
 
+function lines.clear()
+	history = {}
+end
+
 return lines

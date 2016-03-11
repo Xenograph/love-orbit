@@ -21,7 +21,7 @@ function love.load()
 	universe:addBody(body(vector(centerX+20,centerY),vector(0,-math.sqrt(1000000/20)), 10000, 10))
 	universe:addBody(body(vector(centerX+100/2,centerY+100*math.sqrt(3)/2),vector(math.sqrt(1000000/100)*math.sqrt(3)/2,-math.sqrt(1000000/100)/2), 100, 4))
 	universe:addBody(body(vector(centerX+100/2,centerY-100*math.sqrt(3)/2),vector(-math.sqrt(1000000/100)*math.sqrt(3)/2,-math.sqrt(1000000/100)/2), 100, 4))
-	universe:addBody(body(vector(centerX+250,centerY+20),vector(-math.sqrt(10000/20),-math.sqrt(1000000/250)), 1, 2))
+	universe:addBody(body(vector(centerX+250,centerY+20),vector(0,-math.sqrt(1000000/250)), 1, 2))
 end
 
 function love.draw()
@@ -52,6 +52,7 @@ end
 function love.keypressed(key)
 	if key == "p" then paused = not paused end
 	if key == "l" then drawLines = not drawLines end
+	if key == "c" then lines.clear() end
 end
 
 function stepUniverse(dt)
